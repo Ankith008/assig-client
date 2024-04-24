@@ -51,6 +51,11 @@ export default function Home() {
     setDatesLeft(diffDays);
   }, [expDate]);
 
+  const handlecancelclick = () => {
+    document.querySelector(".inputcreate").style.display = "none";
+    document.querySelector(".inputcreate2").style.display = "none";
+  };
+
   const handlecreateclick = async () => {
     try {
       const value = document.querySelector(".inputcre").value;
@@ -209,6 +214,7 @@ export default function Home() {
           className="inputcre"
           placeholder="Enter the Api Key"
         />
+        <button onClick={handlecancelclick}>Cancel</button>
         <button onClick={handlebuttonclick}>Create</button>
       </div>
       <div className="inputcreate2">
@@ -217,6 +223,7 @@ export default function Home() {
           className="inputcre2"
           placeholder="Enter the Api Key"
         />
+        <button onClick={handlecancelclick}>Cancel</button>
         <button onClick={handlesendbutton}>Send</button>
       </div>
       <div className="box">

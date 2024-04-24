@@ -2,8 +2,10 @@ import React, { PureComponent, useEffect, useState } from "react";
 import axios from "axios";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import "../css/Graph.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Graph() {
+  const navigate = useNavigate();
   const url = "https://assig-back.onrender.com";
   const [data, setdata] = useState([]);
   const findlist = async () => {
@@ -32,6 +34,9 @@ export default function Graph() {
 
   return (
     <div className="graph">
+      <button className="back" onClick={() => navigate("/home")}>
+        Home
+      </button>
       <ResponsiveContainer width="90%" aspect={3}>
         <BarChart width={150} height={40} data={data} padding="30px 20px ">
           <Bar dataKey="uv" fill="white" width="30px" />
