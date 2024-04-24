@@ -4,10 +4,11 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import "../css/Graph.css";
 
 export default function Graph() {
+  const url = "https://assig-back.onrender.com";
   const [data, setdata] = useState([]);
   const findlist = async () => {
     const response = await axios.post(
-      "http://localhost:5000/auth/getsublist",
+      `${url}/auth/getsublist`,
       {},
       { headers: { authtoken: localStorage.getItem("authToken") } }
     );

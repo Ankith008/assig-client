@@ -4,6 +4,7 @@ import "../css/Sign.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Sign() {
+  const url = "https://assig-back.onrender.com";
   const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
@@ -68,7 +69,7 @@ export default function Sign() {
       return;
     }
     const response = await axios.post(
-      "http://localhost:5000/auth/register",
+      `${url}/auth/register`,
       {
         name: name,
         email: email,
@@ -99,7 +100,7 @@ export default function Sign() {
     e.preventDefault();
     const { email, password } = data;
     const response = await axios.post(
-      "http://localhost:5000/auth/login",
+      `${url}/auth/login`,
       { email: email, password: password },
       {
         headers: { "Content-Type": "application/json" },

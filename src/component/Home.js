@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const url = "https://assig-back.onrender.com";
   const navigate = useNavigate();
   const [view, setView] = useState(false);
   const plans = [
@@ -37,7 +38,7 @@ export default function Home() {
         return;
       }
       const response = await axios.post(
-        "http://localhost:5000/auth/createapikey",
+        `${url}/auth/createapikey`,
         {
           apikey: value,
         },
@@ -71,7 +72,7 @@ export default function Home() {
   const handledelete = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/deleteapikey",
+        `${url}/auth/deleteapikey`,
         {},
         { headers: { authtoken: localStorage.getItem("authToken") } }
       );
@@ -88,7 +89,7 @@ export default function Home() {
   const handlecopy = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/getapikey",
+        `${url}/auth/getapikey`,
         {},
         { headers: { authtoken: localStorage.getItem("authToken") } }
       );
@@ -105,7 +106,7 @@ export default function Home() {
   };
   const handleplanclicka = async (value) => {
     const response = await axios.post(
-      "http://localhost:5000/auth/updatesubpack",
+      `${url}/auth/updatesubpack`,
       {
         subpack: value,
       },
@@ -123,7 +124,7 @@ export default function Home() {
   const handlesendbutton = async () => {
     const value = document.querySelector(".inputcre2").value;
     const response = await axios.post(
-      "http://localhost:5000/auth/sendrequest",
+      `${url}/auth/sendrequest`,
       {
         apikey: value,
       },
