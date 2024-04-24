@@ -238,9 +238,9 @@ export default function Home() {
       </div>
       {subpack && (
         <div className="detail">
-          <p>Subscription Date : `${subDate}`</p>
-          <p>Expiry Date : `${expDate}`</p>
-          <p>Dates Left : `${datesLeft}`</p>
+          <p>Subscription Date : {subDate}</p>
+          <p>Expiry Date : {expDate}</p>
+          <p>Dates Left : {datesLeft}</p>
           <button onClick={() => setSubpack(false)}>Close</button>
         </div>
       )}
