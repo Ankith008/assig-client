@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: "Jost", sans-serif;
-  background-image: url("https://img.freepik.com/free-photo/abstract-textured-backgound_1258-30452.jpg?t=st=1713888198~exp=1713891798~hmac=fd717f365048d2e83faba7f44f8782d1891c6f5e6498a2d30475af9f656c71f1&w=740");
+  background-image: url("../src/images/background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
