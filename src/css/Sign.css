@@ -1,0 +1,112 @@
+.outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  /* box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05),
+    25px 35px 20px rgba(0, 0, 0, 0.05), 25px 30px 30px rgba(0, 0, 0, 0.05),
+    inset -20px -20px 25px rgba(255, 255, 255, 0.426); */
+  background: rgba(255, 255, 255, 0.042);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.outer h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  background-color: transparent;
+  border-color: black;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+}
+button {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  background-color: black;
+  border: none;
+}
+.changing {
+  position: absolute;
+  cursor: pointer;
+  top: 30px;
+  right: 30px;
+  padding: 15px 20px;
+  color: white;
+  background: rgba(255, 255, 255, 0.042);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  display: flex;
+  gap: 20px;
+  color: white;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.plan {
+  border: 2px solid #fff;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.planname {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.planprice {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.plan:hover {
+  background-color: #ffffff33;
+  color: black;
+}
+.view {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  padding: 0.3rem;
+  border-radius: 5px;
+  width: 100%;
+}
+h1 {
+  color: rgba(255, 255, 255, 0.697);
+}
