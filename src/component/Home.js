@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Home.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ export default function Home() {
   const url = "https://assig-back.onrender.com";
   const navigate = useNavigate();
   const [view, setView] = useState(false);
+  const [subpack, setSubpack] = useState(false);
   const plans = [
     {
       id: 1,
@@ -30,6 +31,26 @@ export default function Home() {
       features: ["Unlimited Requests", "For 10 Days"],
     },
   ];
+  const [subDate, setSubDate] = useState("");
+  const [expDate, setExpDate] = useState("");
+  const [datesLeft, setDatesLeft] = useState("");
+
+  useEffect(() => {
+    const data = new Date();
+    const currentdate = `${data.getFullYear()}-${
+      data.getMonth() + 1
+    }-${data.getDate()}`;
+    const newdate = new Date(expDate);
+    const expdate = `${newdate.getFullYear()}-${
+      newdate.getMonth() + 1
+    }-${newdate.getDate()}`;
+    const date1 = new Date(currentdate);
+    const date2 = new Date(expdate);
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    setDatesLeft(diffDays);
+  }, [expDate]);
+
   const handlecreateclick = async () => {
     try {
       const value = document.querySelector(".inputcre").value;
@@ -140,10 +161,28 @@ export default function Home() {
       alert(json.err);
     }
   };
+  const handlesub = async () => {
+    const response = await axios.post(
+      `${url}/auth/getsubpack`,
+      {},
+      { headers: { authtoken: localStorage.getItem("authToken") } }
+    );
+    const json = await response.data;
+    if (json.success) {
+      setSubpack(true);
+      setSubDate(json.subDate);
+      setExpDate(json.expDate);
+    } else {
+      alert(json.error);
+    }
+  };
   return (
     <div>
       {!view && (
         <div className="options">
+          <p className="opt" onClick={handlesub}>
+            Subscribe Detail
+          </p>
           <p className="opt" onClick={handleinitialclick}>
             Crete New Api Key
           </p>
@@ -197,6 +236,14 @@ export default function Home() {
             </div>
           ))}
       </div>
+      {subpack && (
+        <div className="detail">
+          <p>Subscription Date : `${subDate}`</p>
+          <p>Expiry Date : `${expDate}`</p>
+          <p>Dates Left : `${datesLeft}`</p>
+          <button onClick={() => setSubpack(false)}>Close</button>
+        </div>
+      )}
     </div>
   );
 }
